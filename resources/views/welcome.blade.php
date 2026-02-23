@@ -133,6 +133,60 @@
             </div>
         </section>
 
+        {{-- Contact Section --}}
+        <section class="contact-section">
+            <div class="contact-header">
+                <h2 class="contact-title">Get in Touch</h2>
+                <p class="contact-subtitle">Ready to partner with us? Send us a message and we'll get back to you
+                    shortly.</p>
+            </div>
+            <div class="contact-container">
+                <form class="contact-form">
+                    <div class="form-grid">
+                        <div class="form-left">
+                            <div class="input-group">
+                                <label for="name">Name:</label>
+                                <input type="text" id="name" name="name">
+                            </div>
+
+                            <div class="input-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email">
+                            </div>
+
+                            <div class="form-row-inline">
+                                <div class="input-group">
+                                    <label for="company">Company:</label>
+                                    <input type="text" id="company" name="company">
+                                </div>
+                                <div class="input-group">
+                                    <label for="phone">Phone:</label>
+                                    <input type="tel" id="phone" name="phone">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-right">
+                            <div class="input-group full-height">
+                                <label for="message">Message:</label>
+                                <textarea id="message" name="message"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-footer">
+                        <button type="submit" class="btn-send">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
     </main>
 
 </body>
