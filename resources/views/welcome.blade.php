@@ -21,11 +21,11 @@
 
                 {{-- Navigation --}}
                 <ul class="nav-menu">
-                    <li><a href="#" class="active">HOME</a></li>
-                    <li><a href="#">ABOUT</a></li>
-                    <li><a href="#">PRODUCTS</a></li>
-                    <li><a href="#">TESTIMONIALS</a></li>
-                    <li><a href="#">CONTACT</a></li>
+                    <li><a href="{{ route('home') }}" class="active">HOME</a></li>
+                    <li><a href="{{ route('about') }}">ABOUT</a></li>
+                    <li><a href="{{ route('products') }}">PRODUCTS</a></li>
+                    <li><a href="{{ route('testimonials') }}">TESTIMONIALS</a></li>
+                    <li><a href="{{ route('contact') }}">CONTACT</a></li>
                 </ul>
 
                 <div class="nav-actions">
@@ -59,7 +59,7 @@
                         <h3>Pineapple Jam</h3>
                     </div>
                 </div>
-                 <div class="product-card">
+                <div class="product-card">
                     <div class="product-info">
                         <h3>Pineapple Jam</h3>
                     </div>
