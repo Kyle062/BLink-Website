@@ -56,20 +56,20 @@
             <h2 class="section-title">Our Products</h2>
             <p class="section-subtitle">Discover our range of premium pineapple varieties.</p>
 
-            <div class="product-grid">
-                <div class="product-card">
-                    <img src="{{ asset('images/products/product1.png') }}" alt="Fresh Pineapple">
+            <div class="products-layout-wrapper">
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="{{ asset('images/products/product1.png') }}" alt="MD2 Pineapple">
+                        <div class="product-label">MD2 Pineapple (The "Gold Standard")</div>
+                    </div>
+                    <div class="product-card">
+                        <img src="{{ asset('images/products/product2.png') }}" alt="MD3 Pineapple">
+                        <div class="product-label">MD3 Pineapple (The "Smooth Cayenne")</div>
+                    </div>
                 </div>
-                <div class="product-card">
-                    <img src="{{ asset('images/products/product2.png') }}" alt="Pineapple Jam">
-                </div>
-                <div class="product-card">
-                    <img src="{{ asset('images/products/product3.png') }}" alt="Pineapple Slices">
-                </div>
-                <div class="product-card view-all-card">
-                    <img src="{{ asset('images/products/product4.png') }}" alt="View All Products Background"
-                        class="card-bg">
-                    <a href="#" class="btn-view-all">View All Products</a>
+
+                <div class="view-all-wrapper">
+                    <a href="#" class="btn-view-all">View All Products &rarr;</a>
                 </div>
             </div>
         </section>
@@ -80,8 +80,40 @@
                 <div class="services-left-card">
                     <div class="services-info">
                         <h2 class="title">Our Export Services</h2>
-                        <p class="sub-title">From the farms of South Cotabato to the markets of Dubai—we manage the
+                        <p class="sub-title">From the farms of South Cotabato to the markets of Dubai we manage the
                             chain so you don't have to.</p>
+                    </div>
+
+                    <div class="services-elements-grid">
+                        <div class="service-element-item">
+                            <div class="element-icon">
+                                <img src="{{ asset('images/home/verify.png') }}" alt="Logistics Icon">
+                            </div>
+                            <div class="element-content">
+                                <h3>GLOBAL LOGISTICS & QUALITY ASSURANCE</h3>
+                                <ul>
+                                    <li>Scientific Research</li>
+                                    <li>Decentralized Governance</li>
+                                    <li>Machine Sense Detection</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="element-divider"></div>
+
+                        <div class="service-element-item">
+                            <div class="element-icon">
+                               <img src="{{ asset('images/home/statistics.png') }}" alt="Logistics Icon">
+                            </div>
+                            <div class="element-content">
+                                <h3>TRADE & DISTRIBUTION SERVICES</h3>
+                                <ul>
+                                    <li>Self-Sufficient E-commerce Platform</li>
+                                    <li>Decentralized Supply Contracts</li>
+                                    <li>Asset-Direct Market Distribution</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
