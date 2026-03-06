@@ -12,7 +12,7 @@
 
 </head>
 
-<body >
+<body>
     <nav class="navbar">
         <div class="logo">
             <img src="{{ asset('images/logo.png') }}" alt="BLink Logo">
@@ -34,7 +34,6 @@
 
     <main class="container">
         <section class="hero" style="background-image: url('{{ asset('images/hero-pineapple.png') }}');">
-
 
 
             {{-- Hero buttons --}}
