@@ -3,25 +3,21 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     background-color: #fdfbf7;
     font-family: "Inter", sans-serif;
     color: #333;
     width: 100%;
 }
-
 .container {
     width: 100%;
     max-width: 100%;
 }
-
 h1,
 h2,
 h3 {
     line-height: 1.2;
 }
-
 .section-title {
     font-family: "Rozha One", serif;
     font-size: clamp(50px, 5vw, 36px);
@@ -30,7 +26,6 @@ h3 {
     color: #000;
     font-weight: bold;
 }
-
 .section-subtitle {
     font-size: clamp(14px, 3vw, 18px);
     text-align: center;
@@ -39,7 +34,7 @@ h3 {
     padding: 0 20px;
 }
 
-/* === STICKY NAVBAR (preserved) === */
+/* === NAVBAR (sticky + hamburger) === */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -47,48 +42,41 @@ h3 {
     background-color: #fdfbe9;
     padding: clamp(10px, 3vw, 13px) clamp(20px, 4vw, 40px);
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
-    flex-wrap: wrap;
     position: sticky;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
 }
-
 .logo img {
     width: clamp(45px, 8vw, 65px);
     height: auto;
     object-fit: cover;
 }
-
 .nav-menu {
     display: flex;
-    justify-content: flex-end;
     list-style: none;
     gap: clamp(15px, 3vw, 30px);
     margin-left: auto;
-    flex-wrap: wrap;
+    transition: transform 0.3s ease-in-out;
 }
-
 .nav-menu a {
     text-decoration: none;
     color: #000000;
     font-weight: 600;
     font-size: clamp(13px, 2vw, 15px);
     white-space: nowrap;
+    font-family: "Rozha One", serif;
 }
-
 .nav-menu a:hover {
     color: #575757;
 }
 .nav-menu a.active {
     color: #d4a017;
 }
-
 .nav-actions {
     margin-left: clamp(16px, 3vw, 32px);
 }
-
 .btn-black {
     background-color: #000;
     color: #e2ad1c;
@@ -100,12 +88,83 @@ h3 {
     white-space: nowrap;
     display: inline-block;
 }
-
 .btn-black:hover {
     background-color: #242424;
 }
 
-/* === HERO (exact same gradient, background) === */
+/* hamburger icon — hidden on large screens */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-left: 20px;
+}
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: #000;
+    margin: 4px 0;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+@media (max-width: 1024px) {
+    .nav-menu {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: #fdfbe9;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 0;
+        gap: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        transform: translateY(-150%);
+        opacity: 0;
+        pointer-events: none;
+        transition:
+            transform 0.4s ease,
+            opacity 0.3s ease;
+        z-index: 999;
+    }
+    .nav-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+    }
+    .nav-menu a {
+        font-size: 20px;
+        white-space: normal;
+    }
+    .hamburger {
+        display: flex;
+    }
+    .nav-actions {
+        margin-left: auto;
+    }
+}
+@media (max-width: 600px) {
+    .navbar {
+        flex-wrap: wrap;
+    }
+    .nav-actions {
+        order: 3;
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+        margin-left: 0;
+    }
+    .btn-black {
+        width: 100%;
+        text-align: center;
+    }
+    .nav-menu {
+        top: 140px;
+    }
+}
+
+/* === HERO === */
 .hero {
     height: clamp(500px, 110vh, 1200px);
     background-image:
@@ -123,14 +182,12 @@ h3 {
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 }
-
 .hero-overlay {
     width: 100%;
     height: 100%;
     display: flex;
     padding: clamp(20px, 5vw, 50px) clamp(20px, 4vw, 0px);
 }
-
 .hero-content {
     width: 100%;
     max-width: 1500px;
@@ -146,7 +203,6 @@ h3 {
         margin: 30px 20px;
     }
 }
-
 .hero-info {
     margin-bottom: 50px;
 }
@@ -164,16 +220,15 @@ h3 {
     line-height: 1.1;
 }
 .hero-info .sub-text {
-    font-family: Arial, sans-serif;
+    font-family: sans-serif;
     font-size: clamp(18px, 3vw, 25px);
     color: #eff0ec;
     max-width: 700px;
 }
-
 .hero-buttons {
     display: flex;
     gap: clamp(15px, 4vw, 40px);
-    margin: clamp(70px, 6vw, 100px) ;
+    margin: clamp(70px, 6vw, 100px);
     flex-wrap: wrap;
     transform: translateX(0);
 }
@@ -182,7 +237,6 @@ h3 {
         transform: translateX(-100px);
     }
 }
-
 .btn-yellow,
 .btn-outline {
     padding: clamp(12px, 3vw, 20px) clamp(25px, 5vw, 65px);
@@ -208,7 +262,7 @@ h3 {
     background-color: #e7bb1c;
 }
 
-/* === PRODUCTS SECTION (grid intact, 2 columns always) === */
+/* === PRODUCTS === */
 .products-section {
     padding: clamp(40px, 8vw, 80px) clamp(20px, 4vw, 40px);
     background-color: #fdfbf7;
@@ -218,7 +272,6 @@ h3 {
     color: #000;
     font-size: clamp(40px, 8vw, 55px);
 }
-
 .products-layout-wrapper {
     display: flex;
     align-items: center;
@@ -227,9 +280,8 @@ h3 {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 30px;
-    margin-left: 330px; /* keep original offset */
+    margin-left: 330px;
 }
-/* make offset responsive */
 @media (max-width: 1600px) {
     .products-layout-wrapper {
         margin-left: 200px;
@@ -247,14 +299,12 @@ h3 {
         padding: 0 20px;
     }
 }
-
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* exactly 2 columns */
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     flex: 0 1 auto;
 }
-
 .product-card {
     position: relative;
     border-radius: 40px;
@@ -268,21 +318,18 @@ h3 {
 @media (max-width: 900px) {
     .product-card {
         width: 350px;
-        height: auto;
-        aspect-ratio: 4/5;
     }
 }
 @media (max-width: 600px) {
     .product-grid {
         grid-template-columns: 1fr;
-    } /* only 1 col on mobile */
+    }
     .product-card {
         width: 100%;
         max-width: 400px;
         margin: 0 auto;
     }
 }
-
 .product-card img {
     width: 100%;
     height: 100%;
@@ -298,7 +345,6 @@ h3 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
     max-width: 80%;
 }
-
 .view-all-wrapper {
     flex-shrink: 0;
 }
@@ -325,13 +371,12 @@ h3 {
     transform: translateY(-2px);
 }
 
-/* === SERVICES (flex preserved, no design change) === */
+/* === SERVICES === */
 .services-container {
     display: flex;
     justify-content: center;
     gap: 20px;
     padding: 20px;
-    height: auto; /* allow height to adjust on small screens */
     min-height: 600px;
     align-items: stretch;
     margin: 50px;
@@ -355,13 +400,11 @@ h3 {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    height: auto;
     min-height: 500px;
     flex: 1.2;
 }
 .services-image-card {
     flex: 1;
-    min-height: 0;
     overflow: hidden;
     border-radius: 20px;
 }
@@ -393,6 +436,7 @@ h3 {
 .services-left-card .title {
     margin-top: 20px;
     font-size: clamp(30px, 5vw, 40px);
+    font-family: "Rozha One", serif;
 }
 .services-left-card .sub-title {
     font-size: clamp(16px, 3vw, 20px);
@@ -413,7 +457,6 @@ h3 {
     .element-divider {
         width: 100%;
         height: 1px;
-        margin-top: 0;
     }
 }
 .service-element-item {
@@ -468,7 +511,7 @@ h3 {
     margin-top: 80px;
 }
 
-/* === STORY (unchanged, just responsive) === */
+/* === STORY === */
 .story-section-new {
     width: 100%;
     height: 650px;
@@ -593,7 +636,7 @@ h3 {
     font-weight: bold;
 }
 
-/* === CONTACT (flex, no change) === */
+/* === CONTACT === */
 .contact-section {
     padding: clamp(40px, 8vw, 80px) clamp(20px, 4vw, 40px);
     background-color: #f3f3f3;
@@ -604,7 +647,7 @@ h3 {
 }
 .contact-title {
     font-size: clamp(28px, 5vw, 36px);
-    font-family: "Times New Roman", serif;
+    font-family: "Rozha One", serif;
     font-weight: bold;
     margin-bottom: 10px;
 }
@@ -698,7 +741,7 @@ h3 {
     background-color: #222;
 }
 
-/* === FOOTER (fully fluid) === */
+/* === FOOTER === */
 .site-footer {
     background-color: #000;
     color: #fff;
@@ -713,7 +756,7 @@ h3 {
     align-items: start;
 }
 .footer-heading {
-    font-family: "Times New Roman", serif;
+    font-family: "Rozha One", serif;
     font-size: clamp(40px, 8vw, 64px);
     margin-bottom: 20px;
 }
@@ -739,7 +782,7 @@ h3 {
 }
 .footer-subheading {
     font-size: clamp(18px, 3vw, 22px);
-    font-family: "Times New Roman", serif;
+    font-family: "Rozha One", serif;
     margin-bottom: 25px;
     font-weight: bold;
 }
@@ -790,7 +833,7 @@ h3 {
     color: #888;
 }
 
-/* === ADMIN / MODAL (unchanged, just placed) === */
+/* === ADMIN / MODAL (unchanged) === */
 .admin-only {
     display: none;
 }
@@ -800,7 +843,6 @@ body.admin-mode .admin-only {
 body.admin-mode .admin-controls {
     display: flex;
 }
-
 .admin-controls {
     display: none;
     position: absolute;
@@ -830,7 +872,6 @@ body.admin-mode .admin-controls {
     background: #f4f4f4;
     color: #ff4444;
 }
-
 .add-card {
     border: 2px dashed #e2ad1c !important;
     background: #fffef0 !important;
@@ -853,7 +894,6 @@ body.admin-mode .admin-controls {
     font-size: 14px;
     text-transform: uppercase;
 }
-
 .modal-overlay {
     display: none;
     position: fixed;

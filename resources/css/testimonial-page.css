@@ -1,13 +1,156 @@
-/* --- Global Page Setup --- */
-body {
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+body {
     font-family: "Inter", sans-serif;
     background-color: #fff;
     color: #333;
 }
+/* main headings use Rozha One */
+h1,
+h2,
+h3,
+.section-heading,
+.hero h1,
+.modal-header h3,
+.footer-heading,
+.footer-subheading {
+    font-family: "Rozha One", serif;
+}
 
-/* --- Hero Section --- */
+/* === navbar (sticky + hamburger) === */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fdfbe9;
+    padding: clamp(10px, 3vw, 13px) clamp(20px, 4vw, 40px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+.logo img {
+    width: clamp(45px, 8vw, 65px);
+    height: auto;
+    object-fit: cover;
+}
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: clamp(15px, 3vw, 30px);
+    margin-left: auto;
+    transition: transform 0.3s ease-in-out;
+}
+.nav-menu a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 600;
+    font-size: clamp(13px, 2vw, 15px);
+    white-space: nowrap;
+    font-family: "Rozha One", serif;
+}
+.nav-menu a:hover {
+    color: #575757;
+}
+.nav-menu a.active {
+    color: #d4a017;
+}
+.nav-actions {
+    margin-left: clamp(16px, 3vw, 32px);
+}
+.btn-black {
+    background-color: #000;
+    color: #e2ad1c;
+    padding: clamp(8px, 2vw, 10px) clamp(15px, 3vw, 25px);
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: clamp(13px, 2vw, 15px);
+    white-space: nowrap;
+    display: inline-block;
+}
+.btn-black:hover {
+    background-color: #242424;
+}
+
+/* hamburger icon */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-left: 20px;
+}
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: #000;
+    margin: 4px 0;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+@media (max-width: 1024px) {
+    .nav-menu {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: #fdfbe9;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 0;
+        gap: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        transform: translateY(-150%);
+        opacity: 0;
+        pointer-events: none;
+        transition:
+            transform 0.4s ease,
+            opacity 0.3s ease;
+        z-index: 999;
+    }
+    .nav-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+    }
+    .nav-menu a {
+        font-size: 20px;
+        white-space: normal;
+    }
+    .hamburger {
+        display: flex;
+    }
+    .nav-actions {
+        margin-left: auto;
+    }
+}
+@media (max-width: 600px) {
+    .navbar {
+        flex-wrap: wrap;
+    }
+    .nav-actions {
+        order: 3;
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+        margin-left: 0;
+    }
+    .btn-black {
+        width: 100%;
+        text-align: center;
+    }
+    .nav-menu {
+        top: 140px;
+    }
+}
+
+/* === hero section === */
 .hero {
     height: 60vh;
     min-height: 800px;
@@ -20,53 +163,50 @@ body {
     color: white;
     position: relative;
 }
-
 .hero h1 {
-    font-family: "Playfair Display", serif;
+    font-family: "Rozha One", serif;
     font-size: clamp(2.5rem, 5vw, 6rem);
     margin-bottom: 15px;
 }
-
 .hero p {
     font-size: 1.3rem;
     font-weight: 400;
+    font-family: sans-serif;
 }
 
-/* --- Layout Container --- */
+/* === layout container === */
 .content-wrapper {
     max-width: 1300px;
     margin: 0 auto;
     padding: 100px 20px;
 }
 
-/* --- Section Typography --- */
+/* === section typography === */
 .section-heading {
-    font-family: "Playfair Display", serif;
+    font-family: "Rozha One", serif;
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 8px;
     color: #000;
     text-align: left;
 }
-
 .section-subheading {
     font-size: 1rem;
     color: #666;
     margin-bottom: 45px;
     text-align: left;
+    font-family: sans-serif;
 }
 
-/* --- Why Choose Blink Section --- */
+/* === why choose blink === */
 .why-choose-section {
     margin-bottom: 100px;
 }
-
 .features-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
 }
-
 .feature-card {
     background: #ffffff;
     padding: 40px 30px;
@@ -74,44 +214,40 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease;
 }
-
 .icon-placeholder {
     width: 70px;
     height: 70px;
     margin-bottom: 25px;
 }
-
 .icon-placeholder img {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
-
 .feature-card h3 {
     font-size: 1.25rem;
     font-weight: 700;
     margin-bottom: 12px;
     color: #111;
+    font-family: "Rozha One", serif;
 }
-
 .feature-card p {
     font-size: 0.95rem;
     line-height: 1.6;
     color: #555;
+    font-family: sans-serif;
 }
 
-/* --- Client Testimonials Section --- */
+/* === client testimonials === */
 .testimonials-section {
     margin-bottom: 80px;
     background-color: white;
 }
-
 .testimonial-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 40px;
 }
-
 .testimonial-card {
     background-color: #fdfae8;
     padding: 40px 30px;
@@ -121,39 +257,37 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 }
-
 .testimonial-card .quote {
-    font-family: "Inter", sans-serif;
+    font-family: sans-serif;
     font-size: 0.9rem;
     line-height: 1.7;
     color: #1a1a1a;
     margin-bottom: 30px;
     font-weight: 400;
 }
-
 .testimonial-card .author {
     font-weight: 700;
     font-size: 0.8rem;
     color: #000;
     border-top: none;
     padding-top: 0;
+    font-family: sans-serif;
 }
 
-/* --- Join CTA (Dark Section) --- */
+/* === join cta === */
 .join-cta {
-    background-color: #1a1a1a; /* Dark theme from image_c80ba6 */
+    background-color: #1a1a1a;
     color: white;
     text-align: center;
     padding: 100px 20px;
 }
-
 .join-cta h2 {
-    font-family: "Playfair Display", serif;
+    font-family: "Rozha One", serif;
     font-size: 2.8rem;
     margin-bottom: 15px;
 }
-
 .join-cta p {
     color: #ccc;
     font-size: 1.1rem;
@@ -161,8 +295,8 @@ body {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    font-family: sans-serif;
 }
-
 .btn-yellow {
     display: inline-block;
     background-color: #e2ad1c;
@@ -173,51 +307,22 @@ body {
     font-weight: 700;
     font-size: 0.9rem;
     transition: background 0.3s ease;
+    font-family: sans-serif;
 }
-
 .btn-yellow:hover {
     background-color: #c99a18;
 }
 
-/* --- Responsive Breakpoints --- */
-@media (max-width: 1100px) {
-    .testimonial-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .features-grid,
-    .testimonial-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .section-heading {
-        font-size: 2rem;
-    }
-
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-}
-
-/* --- Admin Global Visibility --- */
+/* === admin global visibility === */
 .admin-only,
 .admin-controls {
     display: none;
 }
-
 body.admin-mode .admin-only {
     display: flex;
 }
-
 body.admin-mode .admin-controls {
     display: flex;
-}
-
-/* --- Admin Control Bar --- */
-.testimonial-card {
-    position: relative; /* Needed for absolute positioning of controls */
 }
 
 .admin-controls {
@@ -231,7 +336,6 @@ body.admin-mode .admin-controls {
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
-
 .btn-admin {
     width: 38px;
     height: 38px;
@@ -244,7 +348,6 @@ body.admin-mode .admin-controls {
     justify-content: center;
     font-size: 16px;
 }
-
 .btn-admin.edit {
     background: #e2ad1c;
     color: #000;
@@ -253,12 +356,11 @@ body.admin-mode .admin-controls {
     background: #f8f9fa;
     color: #ff4444;
 }
-
 .btn-admin:hover {
     transform: scale(1.1);
 }
 
-/* --- Add New Testimonial Card --- */
+/* add card */
 .add-card {
     border: 2px dashed #e2ad1c;
     background: transparent !important;
@@ -267,30 +369,27 @@ body.admin-mode .admin-controls {
     cursor: pointer;
     transition: 0.3s;
 }
-
 .add-card:hover {
     background: #fffef0 !important;
     transform: translateY(-5px);
 }
-
 .add-content {
     text-align: center;
     color: #e2ad1c;
 }
-
 .add-content i {
     font-size: 40px;
     margin-bottom: 10px;
 }
-
 .add-content span {
     font-weight: 700;
     text-transform: uppercase;
     font-size: 12px;
     letter-spacing: 1px;
+    font-family: sans-serif;
 }
 
-/* --- Modal Styling --- */
+/* === modal styling === */
 .modal-overlay {
     display: none;
     position: fixed;
@@ -304,7 +403,6 @@ body.admin-mode .admin-controls {
     align-items: center;
     justify-content: center;
 }
-
 .modal-content {
     background: white;
     padding: 40px;
@@ -313,9 +411,194 @@ body.admin-mode .admin-controls {
     max-width: 500px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
 }
-
 .modal-header h3 {
-    font-family: "Playfair Display", serif;
+    font-family: "Rozha One", serif;
     font-size: 1.8rem;
-    margin: 0;
+    margin: 0 0 15px 0;
+}
+.close-x {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background: #f1f1f1;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+}
+.close-x:hover {
+    background: #e2ad1c;
+    color: #fff;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 8px;
+    font-family: sans-serif;
+}
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid #eee;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: sans-serif;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #e2ad1c;
+    background: #fffef0;
+}
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+}
+.btn-cancel {
+    background: transparent;
+    border: none;
+    font-weight: 600;
+    color: #888;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+.btn-save {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.btn-save:hover {
+    background: #e2ad1c;
+    color: #000;
+    transform: translateY(-2px);
+}
+
+/* === responsive breakpoints === */
+@media (max-width: 1100px) {
+    .testimonial-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 768px) {
+    .features-grid,
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+    .section-heading {
+        font-size: 2rem;
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* === footer (copied from home for consistency) === */
+.site-footer {
+    background-color: #000;
+    color: #fff;
+    padding: clamp(40px, 8vw, 80px) clamp(20px, 4vw, 60px) 30px;
+}
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: clamp(20px, 5vw, 40px);
+    align-items: start;
+}
+.footer-heading {
+    font-family: "Rozha One", serif;
+    font-size: clamp(40px, 8vw, 64px);
+    margin-bottom: 20px;
+}
+.footer-description {
+    font-size: clamp(14px, 2vw, 16px);
+    color: #ccc;
+    margin-bottom: 30px;
+    max-width: 350px;
+    line-height: 1.5;
+    font-family: sans-serif;
+}
+.btn-footer-contact {
+    display: inline-block;
+    background-color: #e2ad1c;
+    color: #000;
+    padding: clamp(10px, 2vw, 12px) clamp(25px, 4vw, 35px);
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: clamp(13px, 2vw, 14px);
+}
+.btn-footer-contact:hover {
+    background-color: #f6d875;
+}
+.footer-subheading {
+    font-size: clamp(18px, 3vw, 22px);
+    font-family: "Rozha One", serif;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+.footer-links ul {
+    list-style: none;
+}
+.footer-links li {
+    margin-bottom: 15px;
+}
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: clamp(14px, 2vw, 16px);
+    transition: color 0.3s;
+    font-family: sans-serif;
+}
+.footer-links a:hover {
+    color: #e2ad1c;
+}
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+.contact-item .icon {
+    color: #fff;
+    font-size: clamp(16px, 2vw, 18px);
+}
+.contact-item p {
+    font-size: clamp(14px, 2vw, 15px);
+    line-height: 1.6;
+    color: #fff;
+    flex: 1;
+    font-family: sans-serif;
+}
+.footer-bottom {
+    max-width: 1400px;
+    margin: 60px auto 0;
+    text-align: center;
+}
+.footer-divider {
+    border: 0;
+    border-top: 1px solid #333;
+    margin-bottom: 20px;
+}
+.footer-bottom p {
+    font-size: clamp(11px, 2vw, 12px);
+    color: #888;
+    font-family: sans-serif;
 }
